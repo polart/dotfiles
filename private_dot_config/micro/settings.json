@@ -1,0 +1,12 @@
+{
+    "*.md": {
+        "tabstospaces": false
+    },
+    "colorscheme": "material-tc",
+    "diffgutter": true,
+    "hlsearch": true,
+    "mkparents": true,
+    "parsecursor": true,
+    "rmtrailingws": true,
+    "scrollbar": true
+}

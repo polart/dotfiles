@@ -1,0 +1,12 @@
+[edit]
+    command = "code"
+    args = ["--wait"]
+
+[cd]
+    command = "nu"
+
+[diff]
+    command = "delta"
+    pager = "delta"
+    exclude = ["scripts"]
+    args = ["--config", "/Users/polart/.config/git/config", "--features", "+ov-diff", "{{ `{{ .Destination }}` }}", "{{ `{{ .Target }}` }}"]

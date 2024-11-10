@@ -1,0 +1,6 @@
+chezmoi: cobra
+ov: cobra
+
+# needs https://github.com/clap-rs/clap/issues/3166
+fnm: zsh
+delta: zsh

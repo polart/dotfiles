@@ -1,0 +1,82 @@
+[user]
+	name = Artem Polunin
+	email = artem.pun@gmail.com
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKKFJHNmGgvWM2MQnmvEOMollqYy2G4ur3IQj8HDWFYs
+
+[includeIf "gitdir:~/Work/"]
+    path = config-work
+
+[include]
+	path = gitalias.txt
+
+[include]
+    path = delta.themes
+
+[color]
+	ui = true
+
+[core]
+    pager = delta --pager='ov -F'
+	editor = micro
+	autocrlf = input
+	symlinks = true
+	longpaths = true
+	fsmonitor = false
+
+[pager]
+	show = delta --features +ov-show
+	diff = delta --features +ov-diff
+    log  = delta --features +ov-log
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[init]
+	defaultBranch = main
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+	line-numbers = true
+	side-by-side = true
+	file-style = yellow
+    # syntax-theme = Sublime Snazzy
+	features = arctic-fox
+    # plus-style = syntax "#003800"
+    # minus-style = syntax "#3f0001"
+
+[delta "ov-show"]
+    pager=ov -F --header 3 --section-delimiter '^(commit|added:|removed:|renamed:|Δ)' --section-header --pattern '•'
+
+[delta "ov-diff"]
+    pager=ov -F --section-delimiter '^(commit|added:|removed:|renamed:|Δ)' --section-header --pattern '•'
+
+[delta "ov-log"]
+    pager=ov -F --section-delimiter '^commit' --section-header-num 3
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit

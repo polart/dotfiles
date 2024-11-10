@@ -1,0 +1,136 @@
+# zmodload zsh/zprof
+
+# If you come from bash you might have to change your $PATH.
+export PATH=~/Library/Python/3.7/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/usr/local/opt/crowdin@3/bin:$PATH"
+export PATH="/Users/polart/.deno/bin:$PATH"
+# to make tmux work with less/bat/man/etc.
+# export LESS='--mouse'
+
+export XDG_CONFIG_HOME="/Users/polart/.config"
+
+export EDITOR=micro
+
+# Scaleway CLI autocomplete initialization.
+eval "$(scw autocomplete script shell=zsh)"
+
+eval "$(fnm env --use-on-cd --shell zsh)"
+
+eval "$(brew shellenv)"
+
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+export LESSHISTFILE=/Users/polart/.cache/less/history
+export NODE_REPL_HISTORY=/Users/polart/.cache/node/history
+
+# User configuration
+
+setopt hist_ignore_all_dups # remove older duplicate entries from history
+setopt hist_reduce_blanks # remove superfluous blanks from history items
+setopt inc_append_history # save history entries as soon as they are entered
+setopt share_history # share history between different instances of the shell
+setopt auto_cd # cd by typing directory name if it's not a command
+# setopt correct_all # autocorrect commands
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt always_to_end # move cursor to end if word had one match
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+
+# Uses the zsh precmd function hook to set the tab title to the current working directory before each prompt
+DISABLE_AUTO_TITLE="true"
+function precmd () {
+    window_title="\\033]0;${PWD##*/}\\007"
+    echo -ne "$window_title"
+}
+
+export LDFLAGS="-L/usr/local/opt/ruby/lib"
+export CPPFLAGS="-I/usr/local/opt/ruby/include"
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Exports
+export SLS_DEPRECATION_DISABLE=*
+
+# Alisases
+alias zshconfig="code ~/.zshrc"
+alias zshenv="code ~/.zshenv"
+
+alias b='open -a "Arc"'
+alias c='code'
+alias v='code'
+alias t='timew'
+
+alias vj='code /Users/polart/Projects/jupiter'
+
+# alias ngrok='~/ngrok'
+alias s='supabase'
+alias j='just'
+
+# alias ls='colorls --sd -A'
+# alias lr='ls --report'
+# alias ll='colorls --sd -l -A'
+# alias lt='colorls --sd --tree -A'
+alias ls='eza --group-directories-first -a --no-user --no-permissions --icons'
+alias ll='ls -l'
+alias lt='ll -T --level 2'
+
+alias d='docker'
+alias dps='docker ps --format "{{.ID}} - {{.Names}} - {{.Status}} - {{.Image}} - {{.Ports}}"'
+alias dpsa='dps -a'
+alias di='docker images'
+alias ds='docker stop $(docker ps -a -q)'
+alias dr='docker rm $(docker ps -a -q)'
+
+alias dmr='export $(cat ../../.env | xargs) && dcr --rm -d --name apollo --service-ports apollo'
+alias dme='docker exec -it apollo zsh'
+alias dms='docker-compose -f ~/Work/Preply/apollo/monolith/docker-compose.yml -f ~/Work/Preply/apollo/monolith/docker-compose.kafka.yml -f ~/Work/Preply/apollo/monolith/docker-compose.full.yml down'
+
+alias m='micro'
+
+# Env vars
+export DOCKER_BUILDKIT=1
+export MICRO_TRUECOLOR=1
+
+export HUSKY_SKIP_HOOKS=true
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/vault vault
+
+# eval "$(zoxide init zsh)"
+
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# eval "$(direnv hook zsh)"
+
+source /Users/polart/.config/op/plugins.sh
+
+complete -o nospace -C /usr/local/bin/terraform terraform
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+eval "$(atuin init zsh)"
+eval "$(starship init zsh)"
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zprof
+
+# bun completions
+[ -s "/Users/polart/.bun/_bun" ] && source "/Users/polart/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"
+
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
