@@ -24,6 +24,8 @@ brew "starship"
 brew "vivid"
 brew "zoxide"
 brew "supabase/tap/supabase"
+brew "noborus/tap/ov"
+brew "delta"
 brew "kubernetes-cli"
 brew "kubectx"
 
