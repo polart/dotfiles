@@ -101,6 +101,9 @@ path add /opt/homebrew/bin
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
 
+mkdir ~/.local/share/atuin/
+atuin init nu | save ~/.local/share/atuin/init.nu
+
 mkdir ~/.cache/starship
 starship init nu | save -f ~/.cache/starship/init.nu
 
