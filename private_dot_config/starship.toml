@@ -50,6 +50,7 @@ disabled = false
 
 [kubernetes]
 disabled = false
+detect_folders = [ 'kubernetes' ]
 
 [os.symbols]
 Alpaquita = " "
