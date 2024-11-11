@@ -12,7 +12,7 @@ $directory\
 $git_branch\
 $git_state\
 $fill\
-$cmd_duration $nodejs$rust$jobs$time\
+$cmd_duration $kubernetes$nodejs$rust$jobs$time\
 $line_break\
 $character"""
 
@@ -48,11 +48,9 @@ format = "[ $time]($style)"
 [os]
 disabled = false
 
-[custom.yarn]
-command = 'yarn --version'
-require_repo = true
-symbol = ''
-detect_files = ['yarn.lock']
+[kubernetes]
+format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) '
+disabled = false
 
 [os.symbols]
 Alpaquita = " "
