@@ -49,7 +49,6 @@ format = "[ $time]($style)"
 disabled = false
 
 [kubernetes]
-format = 'on [⛵ ($user on )($cluster in )$context \($namespace\)](dimmed green) '
 disabled = false
 
 [os.symbols]
