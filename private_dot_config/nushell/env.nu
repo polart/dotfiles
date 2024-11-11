@@ -101,7 +101,8 @@ path add /opt/homebrew/bin
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
 
-# starship init nu | save -f ~/.cache/starship/init.nu
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu
 
 $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir ~/.cache/carapace
