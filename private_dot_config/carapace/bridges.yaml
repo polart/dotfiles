@@ -1,5 +1,6 @@
 chezmoi: cobra
 ov: cobra
+stern: cobra
 
 # needs https://github.com/clap-rs/clap/issues/3166
 fnm: zsh
