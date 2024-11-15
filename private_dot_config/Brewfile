@@ -28,6 +28,7 @@ brew "noborus/tap/ov"
 brew "delta"
 brew "kubernetes-cli"
 brew "kubectx"
+brew "stern"
 
 cask "arc"
 cask "raycast"
