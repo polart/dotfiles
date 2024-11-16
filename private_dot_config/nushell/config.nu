@@ -934,3 +934,4 @@ alias v = code
 alias m = micro
 alias c = chezmoi
 alias g = git
+alias cd = z
